@@ -31,8 +31,25 @@ h1 {
 
 .gameBoard {
     min-height: max-content;
-    min-width: 500px;
+    min-width: 400px;
     display: flex;
+    padding: .5rem;
+    justify-content: space-between;
+}
+
+.playersGrid {
+    padding: .7rem;
+    display: grid;
+    grid-template-columns: repeat(10, 20px);
+    grid-template-rows: repeat(10, 20px);
+    gap: 2px;
+    margin: 10px;
+}
+
+.boardCell {
+    width: 20px;
+    height: 20px;
+    background: lightgray;
 }
 
 .disable {
