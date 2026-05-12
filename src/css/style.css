@@ -29,6 +29,18 @@ h1 {
     cursor: pointer;
 }
 
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.titles {
+    display: flex;
+    gap: 1.3rem;
+    justify-content: space-around;
+}
+
 .gameBoard {
     min-height: max-content;
     min-width: 400px;
@@ -49,7 +61,27 @@ h1 {
 .boardCell {
     width: 20px;
     height: 20px;
-    background: lightgray;
+    background: rgb(255, 255, 255);
+}
+
+.aircraft {
+    background-color: #F74545;
+}
+
+.battleship {
+    background-color: #F74545;
+}
+
+.cruiser {
+    background-color: #F74545;
+}
+
+.submarine {
+    background-color: #F74545;
+}
+
+.destroyer {
+    background-color: #F74545;
 }
 
 .disable {
