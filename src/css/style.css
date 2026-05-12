@@ -28,3 +28,13 @@ h1 {
     border-radius: 10px;
     cursor: pointer;
 }
+
+.gameBoard {
+    min-height: max-content;
+    min-width: 500px;
+    display: flex;
+}
+
+.disable {
+    display: none;
+}

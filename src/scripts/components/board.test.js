@@ -1,5 +1,17 @@
-describe('create game board', () => {
-    const board = createBoard();
+import { createBoard } from "./board.js";
 
-    expect(board).toBeInstanceOf(HTMLDivElement);
+describe('create game board', () => {
+    test('should create board inside flex container', () => {
+        // Simulation
+        document.body.innerHTML = `<div id="flex-container"></div>`;
+        
+        createBoard();
+
+        const flexContainer = document.querySelector('#flex-container');
+        const board = flexContainer.querySelector('.gameBoard');
+
+        expect(board).not.toBeNull();
+        expect(flexContainer.children.length).toBe(1);
+        expect(board.children.length).toBe(2);
+    });
 });
