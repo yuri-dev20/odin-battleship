@@ -1,11 +1,11 @@
-import { createBoard } from "./board.js";
+import { createBoardUI } from "./board.js";
 
 describe('create game board', () => {
     test('should create board inside flex container', () => {
         // Simulation
         document.body.innerHTML = `<div id="flex-container"></div>`;
         
-        createBoard();
+        createBoardUI();
 
         const flexContainer = document.querySelector('#flex-container');
         const board = flexContainer.querySelector('.gameBoard');

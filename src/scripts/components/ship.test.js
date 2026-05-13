@@ -5,7 +5,7 @@ describe('emulate ship funcionality', () => {
         const aircraft = new Ship(5);
 
         expect(aircraft.length).toBe(5);
-        expect(aircraft.hitsTaken).toBe(5);
-        expect(aircraft.length).toBeFalsy();
+        expect(aircraft.hitsTaken).toBe(0);
+        expect(aircraft.sunk).toBeFalsy();
     });
 });

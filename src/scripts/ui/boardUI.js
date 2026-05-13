@@ -1,4 +1,4 @@
-export function createBoard() {
+export function createBoardUI() {
     const flexContainer = document.querySelector('#flex-container');
 
     const boardDiv = document.createElement('div');
