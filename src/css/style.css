@@ -29,7 +29,7 @@ h1 {
     cursor: pointer;
 }
 
-.flex-container {
+#flex-container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -46,7 +46,7 @@ h1 {
     min-width: 400px;
     display: flex;
     padding: .5rem;
-    justify-content: space-between;
+    gap: 2rem;
 }
 
 .playersGrid {
@@ -62,26 +62,21 @@ h1 {
     width: 20px;
     height: 20px;
     background: rgb(255, 255, 255);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background-color 0.2s;
 }
 
-.aircraft {
-    background-color: #F74545;
+.ship {
+    background-color: #4B5563;
 }
 
-.battleship {
-    background-color: #F74545;
+.hit {
+    background-color: #EF4444;
 }
 
-.cruiser {
-    background-color: #F74545;
-}
-
-.submarine {
-    background-color: #F74545;
-}
-
-.destroyer {
-    background-color: #F74545;
+.miss {
+    background-color: #93C5FD;
 }
 
 .disable {
