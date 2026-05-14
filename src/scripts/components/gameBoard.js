@@ -4,6 +4,9 @@ export class GameBoard {
     constructor() {
         this.grid = this.createGameBoardGrid();
         this.ships = this.createShips();
+
+        this.missedAttacks = [];
+        this.successfulAttacks = [];
     }
 
     isValidPosition(positions) {
@@ -31,7 +34,7 @@ export class GameBoard {
             const positions = this.generateValidPositions(shipObj.ship.length);
 
             positions.forEach(([x, y]) => {
-                this.grid[x][y] = shipObj.name;
+                this.grid[x][y] = shipObj;
             });
 
             return {
@@ -59,9 +62,9 @@ export class GameBoard {
 
         if (direction === "horizontal") {
             x = Math.floor(Math.random() * 10);
-            y = Math.floor(Math.random() * (10 - length));
+            y = Math.floor(Math.random() * (10 - length + 1));
         } else {
-            x = Math.floor(Math.random() * (10 - length));
+            x = Math.floor(Math.random() * (10 - length + 1));
             y = Math.floor(Math.random() * 10);
         }
 
@@ -76,5 +79,33 @@ export class GameBoard {
         }
 
         return positions;
+    };
+
+    receiveAttack(x, y) {
+        const currentCell = this.grid[x][y];
+
+        const alreadyMissed = this.missedAttacks.some(
+            ([row, col]) => row === x && col === y
+        );
+
+        const alreadyHit = this.successfulAttacks.some(
+            ([row, col]) => row === x && col === y
+        );
+
+        if (alreadyMissed || alreadyHit) {
+            return "already attacked";
+        }
+
+        if (currentCell !== null) {
+            currentCell.ship.hit();
+
+            this.successfulAttacks.push([x, y]);
+
+            return "hit";
+        }
+
+        this.missedAttacks.push([x, y]);
+
+        return "miss";
     };
 }

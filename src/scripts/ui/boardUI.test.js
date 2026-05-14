@@ -1,4 +1,4 @@
-import { createBoardUI } from "./board.js";
+import { createBoardUI } from "./boardUI.js";
 
 describe('create game board', () => {
     test('should create board inside flex container', () => {

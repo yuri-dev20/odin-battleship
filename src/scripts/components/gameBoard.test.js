@@ -43,4 +43,59 @@ describe('Gameboard', () => {
 
         expect(hasShips).toBe(true);
     });
+
+    test('should register a missed attack', () => {
+        const gameBoard = new GameBoard();
+
+        gameBoard.receiveAttack(0, 0);
+
+        expect(gameBoard.missedAttacks).toContainEqual([0, 0]);
+    });
+
+    test('should hit a ship', () => {
+        const gameBoard = new GameBoard();
+        const shipObj = gameBoard.ships[0];
+
+        gameBoard.grid[0][0] = shipObj;
+        gameBoard.receiveAttack(0, 0);
+
+        expect(shipObj.ship.hitsTaken).toBe(1);
+    });
+
+    test('should register a successful attack', () => {
+        const gameBoard = new GameBoard();
+        const shipObj = gameBoard.ships[0];
+
+        gameBoard.grid[2][3] = shipObj;
+        gameBoard.receiveAttack(2, 3);
+
+        expect(gameBoard.successfulAttacks).toContainEqual([2, 3]);
+    });
+
+    test('should not allow repeated attacks', () => {
+        const gameBoard = new GameBoard();
+
+        gameBoard.receiveAttack(1, 1);
+        const result = gameBoard.receiveAttack(1, 1);
+
+        expect(result).toBe('already attacked');
+    });
+
+    test('should return hit when ship is attacked', () => {
+        const gameBoard = new GameBoard();
+        const shipObj = gameBoard.ships[0];
+
+        gameBoard.grid[4][4] = shipObj;
+        const result = gameBoard.receiveAttack(4, 4);
+        
+        expect(result).toBe('hit');
+    });
+
+    test('should return miss when no ship is attacked', () => {
+        const gameBoard = new GameBoard();
+
+        const result = gameBoard.receiveAttack(5, 5);
+
+        expect(result).toBe('miss');
+    });
 });
