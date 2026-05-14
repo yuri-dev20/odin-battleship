@@ -108,4 +108,10 @@ export class GameBoard {
 
         return "miss";
     };
+
+    allShipsSunk() {
+        return this.ships.every(shipObj => 
+            shipObj.ship.isSunk()
+        );
+    }
 }

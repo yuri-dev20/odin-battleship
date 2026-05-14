@@ -98,4 +98,32 @@ describe('Gameboard', () => {
 
         expect(result).toBe('miss');
     });
+
+    test('should return false if not all ships are sunk', () => {
+        const gameBoard = new GameBoard();
+
+        expect(gameBoard.allShipsSunk()).toBe(false);
+    });
+
+    test('should return true when all ships are sunk', () => {
+        const gameBoard = new GameBoard();
+
+        gameBoard.ships.forEach(shipObj => {
+            shipObj.ship.hitsTaken = shipObj.ship.length;
+        });
+
+        expect(gameBoard.allShipsSunk()).toBe(true);
+    });
+
+    test('should return true when all ships receive enough hits', () => {
+        const gameBoard = new GameBoard();
+
+        gameBoard.ships.forEach(shipObj => {
+            for (let i = 0; i < shipObj.ship.length; i++) {
+                shipObj.ship.hit();
+            }
+        });
+
+        expect(gameBoard.allShipsSunk()).toBe(true);
+    });
 });
